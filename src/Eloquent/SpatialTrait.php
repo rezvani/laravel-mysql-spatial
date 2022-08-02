@@ -223,7 +223,7 @@ trait SpatialTrait
             throw new UnknownSpatialRelationFunction($relationship);
         }
 
-        $query->whereRaw("st_{$relationship}(`$geometryColumn`, ST_GeomFromText(?, ?, 'axis-order=long-lat'))", [
+        $query->whereRaw("st_{$relationship}(`$geometryColumn`, ST_GeomFromText(?, ?))", [
             $geometry->toWkt(),
             $geometry->getSrid(),
         ]);
